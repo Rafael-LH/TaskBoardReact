@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon ./Server/index.js",
-    "dev": "webpack -w --progress"
+    "dev": "webpack -w --env.NODE_ENV=development"
   },
   "repository": {
     "type": "git",
@@ -44,6 +44,7 @@
     "react-router-dom": "^5.2.0",
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   }
 }

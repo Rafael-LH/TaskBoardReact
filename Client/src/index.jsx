@@ -4,5 +4,5 @@ import App from './routes/App';
 
 render(
   <App />,
-  document.getElementById('root')
+  document.getElementById('app')
 )
