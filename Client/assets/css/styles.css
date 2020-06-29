@@ -1,0 +1,30 @@
+main{
+  width: 1080px;
+  margin: auto;
+  border: 1px solid red;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.container-float--button button{
+  position: fixed;
+  right: 10px;
+  bottom: 0;
+  margin-bottom: 10px;
+  padding: 4px 7px;
+  cursor: pointer;
+  border-radius: 100%;
+}

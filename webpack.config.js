@@ -7,7 +7,7 @@ module.exports = (env) => {
     entry: path.resolve(__dirname, 'Client/src/index.jsx'),
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'bundle.[hash].js',
+      filename: 'bundle.js',
       publicPath: '/'
     },
     resolve: {
@@ -29,6 +29,11 @@ module.exports = (env) => {
         {
           test: /\.html$/i, // Nos sirve para que nos pueda cargar files imagenes 
           loader: 'html-loader'
+        },
+
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader']
         }
       ]
     },

@@ -1,6 +1,7 @@
 import React from 'react';
+import Table from '../components/Table';
 
 const Home = () => (
-  <h1>Task Board</h1>
+  <Table />
 )
 export default Home;
