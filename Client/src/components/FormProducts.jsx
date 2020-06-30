@@ -4,7 +4,6 @@ import { createPortal } from 'react-dom'
 const FormComponentProducts = ({ onClose }) => {
   const [form, setForm] = useState([]);
 
-
   /**
    * Handlers
    */
@@ -14,7 +13,7 @@ const FormComponentProducts = ({ onClose }) => {
       [e.target.name]: e.target.value.trim()
     })
   }
-  const hanldeClose = () => onClose();
+  const handleClose = () => onClose();
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(form);
@@ -22,7 +21,7 @@ const FormComponentProducts = ({ onClose }) => {
   return (
     createPortal(
       <div className="container-from">
-        <button onClick={hanldeClose}>X</button>
+        <button onClick={handleClose}>X</button>
         <form className='form-product' onSubmit={handleSubmit}>
           <input type="text" name='product' placeholder='Producto' onChange={handleChange} />
           <input type="text" name='brand' placeholder='Marca' onChange={handleChange} />

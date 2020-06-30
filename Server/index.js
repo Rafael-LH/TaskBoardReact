@@ -5,6 +5,10 @@ const app = express();
 
 const router = require('./network/routes');
 
+// Conexion with db
+const db = require('./config/db');
+db();
+
 // static files
 const files = path.resolve(__dirname, '../dist');
 app.use(express.static(files));

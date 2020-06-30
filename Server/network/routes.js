@@ -1,5 +1,5 @@
 // server router
-const task = require('../modules/task/network');
+const task = require('../components/task/network');
 
 function router(server) {
   server.use('/task', task);
