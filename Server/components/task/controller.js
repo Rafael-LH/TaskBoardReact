@@ -10,7 +10,17 @@ const addProduct = (data) => {
     }
   })
 }
-
+const listProduct = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const data = await store.list();
+      resolve(data);
+    } catch (err) {
+      reject(err);
+    }
+  })
+}
 module.exports = {
   addProduct,
+  listProduct
 }

@@ -1,5 +1,4 @@
 exports.sendResponse = (res, status, message = '', result = {}) => {
-
   const issetError = message.toString().indexOf('TypeError') > -1;
   const resStatus = (status) ? status : (issetError) ? 500 : 200;
   const resMessage = (issetError)

@@ -1,6 +1,6 @@
 const path = require('path');
 const express = require('express');
-const cors = require('cors');
+// const cors = require('cors');
 const app = express();
 
 const router = require('./network/routes');
@@ -16,7 +16,7 @@ app.use(express.static(files));
 // config server
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+// app.use(cors());
 
 app.get('/', (req, res) => {
   res.sendFile('index.html', { root: 'dist' })

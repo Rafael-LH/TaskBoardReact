@@ -4,7 +4,13 @@ const router = express.Router();
 const ctr = require('./controller');
 
 router.get('/', async (req, res) => {
-  res.status(200).send('Get Tasks')
+  try {
+    const data = await ctr.listProduct();
+    res.status(200).send(data)
+    // sendResponse(res, 200, 'Get all list', data)
+  } catch (err) {
+    sendResponse(res, 500, err, {})
+  }
 })
 
 router.post('/', async (req, res) => {

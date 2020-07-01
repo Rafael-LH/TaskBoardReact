@@ -11,6 +11,17 @@ const add = (data) => {
     }
   })
 }
+const list = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const result = await Model.find();
+      resolve(result)
+    } catch (err) {
+      reject(err)
+    }
+  })
+}
 module.exports = {
   add,
+  list
 }
