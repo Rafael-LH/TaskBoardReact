@@ -1,6 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const TableComponent = ({ listProducts }) => {
+const TableComponent = ({ listProducts, onAction }) => {
+  const [idDeleteProduct, setIdDeleteProduct] = useState(null);
+  const [idUpdateProduct, setIdUpdateProduct] = useState(null);
+
+  // handlers
+  const handleUpdateProduct = async (id) => {
+
+  }
+  const handleDeleteProduct = async (id) => {
+    await fetch('/task/', {
+      method: 'delete',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id })
+    });
+    setEventAction(true);
+    onAction();
+  }
+
+  // effects
+  useEffect(() => {
+    const updateProduct = async () => await handleUpdateProduct(idUpdateProduct);
+    const deleteProduct = async () => await handleDeleteProduct(idDeleteProduct);
+
+    if (idUpdateProduct) updateProduct()
+    if (idDeleteProduct) deleteProduct();
+
+  }, [idUpdateProduct || idDeleteProduct]);
+
   return (
     <table>
       <tbody>
@@ -13,14 +42,14 @@ const TableComponent = ({ listProducts }) => {
         </tr>
         {
           listProducts.map(item => (
-            <tr>
+            <tr key={item._id} >
               <td>{item.product}</td>
               <td>{item.brand}</td>
               <td>{item.description}</td>
               <th>{item.price}</th>
               <th>
-                <button>Actualizar</button>
-                <button>Eliminar</button>
+                <button onClick={() => setIdUpdateProduct(item._id)}>Actualizar</button>
+                <button onClick={() => setIdDeleteProduct(item._id)}>Eliminar</button>
               </th>
             </tr>
           ))

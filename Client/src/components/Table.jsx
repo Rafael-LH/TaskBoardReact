@@ -13,26 +13,29 @@ const Table = () => {
   const handleClick = (e) => {
     e.preventDefault();
     setModal(true);
-    console.log(e.target);
   }
-  const handleCloseModal = () => {
+  const handleCloseModal = async () => {
+    await fetchData();
     setModal(false);
   }
-
+  const fetchData = async () => {
+    const response = await fetch('/task')
+    const result = await response.json();
+    setListProducts(result)
+  }
+  const onAction = async () => await fetchData();
   /**
    * effects
    */
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('/task')
-      const result = await response.json();
-      setListProducts(result)
+    const getData = async () => {
+      await fetchData();
     }
-    fetchData();
+    getData();
   }, [])
   return (
     <>
-      <TableComponent listProducts={listProducts} />
+      <TableComponent listProducts={listProducts} onAction={onAction} />
       <FloatButton handleClick={handleClick} />
       {
         modal &&
@@ -41,5 +44,4 @@ const Table = () => {
     </>
   )
 }
-
 export default Table;

@@ -21,4 +21,8 @@ router.post('/', async (req, res) => {
     sendResponse(res, 500, err, {})
   }
 })
+
+router.delete('/', async (req, res) => {
+  console.log(req.body.id);
+})
 module.exports = router;
