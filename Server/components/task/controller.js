@@ -20,7 +20,40 @@ const listProduct = () => {
     }
   })
 }
+const deleteProduct = (id) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const data = await store.delete(id);
+      resolve(data);
+    } catch (err) {
+      reject(err)
+    }
+  })
+}
+const updateProduct = (id, data) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const response = await store.update(id, data);
+      resolve(response);
+    } catch (err) {
+      reject(err);
+    }
+  })
+}
+const getProduct = (id) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const data = await store.get(id);
+      resolve(data);
+    } catch (err) {
+      reject(err);
+    }
+  })
+}
 module.exports = {
   addProduct,
-  listProduct
+  listProduct,
+  deleteProduct,
+  updateProduct,
+  getProduct,
 }

@@ -1,34 +1,30 @@
 import React, { useState, useEffect } from 'react';
 
-const TableComponent = ({ listProducts, onAction }) => {
+const TableComponent = ({ listProducts, onAction, handleGetProduct }) => {
   const [idDeleteProduct, setIdDeleteProduct] = useState(null);
-  const [idUpdateProduct, setIdUpdateProduct] = useState(null);
 
-  // handlers
-  const handleUpdateProduct = async (id) => {
-
-  }
   const handleDeleteProduct = async (id) => {
-    await fetch('/task/', {
-      method: 'delete',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ id })
-    });
-    setEventAction(true);
-    onAction();
+    try {
+      await fetch('/task/', {
+        method: 'delete',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id })
+      });
+      setIdDeleteProduct(null);
+      onAction();
+    } catch (error) {
+      setIdDeleteProduct(null);
+      onAction();
+    }
   }
 
   // effects
   useEffect(() => {
-    const updateProduct = async () => await handleUpdateProduct(idUpdateProduct);
     const deleteProduct = async () => await handleDeleteProduct(idDeleteProduct);
-
-    if (idUpdateProduct) updateProduct()
     if (idDeleteProduct) deleteProduct();
-
-  }, [idUpdateProduct || idDeleteProduct]);
+  }, [idDeleteProduct]);
 
   return (
     <table>
@@ -48,7 +44,7 @@ const TableComponent = ({ listProducts, onAction }) => {
               <td>{item.description}</td>
               <th>{item.price}</th>
               <th>
-                <button onClick={() => setIdUpdateProduct(item._id)}>Actualizar</button>
+                <button onClick={() => handleGetProduct(item._id)}>Actualizar</button>
                 <button onClick={() => setIdDeleteProduct(item._id)}>Eliminar</button>
               </th>
             </tr>

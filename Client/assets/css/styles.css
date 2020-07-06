@@ -1,7 +1,6 @@
 main{
   width: 1080px;
   margin: auto;
-  border: 1px solid red;
 }
 table {
   font-family: arial, sans-serif;
@@ -24,7 +23,64 @@ tr:nth-child(even) {
   right: 10px;
   bottom: 0;
   margin-bottom: 10px;
-  padding: 4px 7px;
+  padding: 1px 12px 4px;
   cursor: pointer;
   border-radius: 100%;
+  outline: 0;
+  border: 0;
+  background-color: #ff6e40;
+  color: #fff;
+  font-size: 2em;
+}
+.layout-container-from{
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-form-products{
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+.container-form-products{
+  background-color: #fff;
+  border-radius: 5px;
+}
+.container-form-products .form-product {
+  padding: 20px;
+  max-width: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.container-form-products > button:nth-child(1) {
+  position: absolute;
+  border-radius: 100%;
+  padding: 8px 11px;
+  top: -10px;
+  left: -10px;
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  background-color: #c2185b;
+  color: #fff;
+}
+.form-product input {
+  width: 40%;
+  margin: 5px;
+  padding: 4px;
+}
+.container-btn-save {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }

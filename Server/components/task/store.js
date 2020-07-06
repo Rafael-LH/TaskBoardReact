@@ -21,7 +21,45 @@ const list = () => {
     }
   })
 }
+const deleteProduct = (id) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      await Model.deleteOne({ _id: id });
+      resolve('Producto eliminado');
+    } catch (err) {
+      reject(err);
+    }
+  })
+}
+const update = (id, data) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const response = await Model.findOne({ _id: id });
+      response.product = data.product;
+      response.brand = data.brand;
+      response.description = data.description;
+      response.price = data.price;
+      response.save();
+      resolve('Updated Product')
+    } catch (err) {
+      reject(err)
+    }
+  })
+}
+const get = (id) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const data = await Model.findOne({ _id: id });
+      resolve(data);
+    } catch (err) {
+      reject(err);
+    }
+  })
+}
 module.exports = {
   add,
-  list
+  list,
+  delete: deleteProduct,
+  update,
+  get,
 }
